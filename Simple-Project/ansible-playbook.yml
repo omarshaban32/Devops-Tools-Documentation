@@ -4,23 +4,23 @@
   connection: local
   tasks:
     - name: stop current running container
-      command: sudo  docker stop web-container
+      command: docker stop web-container
       ignore_errors: yes
 
     - name: remove stopped container
-      command: sudo  docker rm web-container
+      command:  docker rm web-container
       ignore_errors: yes
 
     - name: remove comingsoon-image
-      command: sudo  docker rmi omarshaban32/comingsoonpage
+      command:   docker rmi omarshaban32/comingsoonpage
       ignore_errors: yes
 
     - name: build docker image using the Dockerfile
-      command: sudo docker build -t omarshaban32/comingsoonpage .
+      command: docker build -t omarshaban32/comingsoonpage .
 
     - name: Push Image to dockerhub
-      command: sudo docker push omarshaban32/comingsoonpage
+      command: docker push omarshaban32/comingsoonpage
 
     - name: run container
-      command: sudo docker run -d --name web-container -p 5000:80 omarshaban32/comingsoonpage
+      command: docker run -d --name web-container -p 5000:80 omarshaban32/comingsoonpage
 
